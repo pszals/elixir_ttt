@@ -6,7 +6,9 @@ To get this up and running, you must first install Erlang:
 2. ```brew install elixir```
 
 To Test:
-  ```mix test```
+
+```mix test```
 
 To Run:
-  ```WIP```
+
+```WIP```
