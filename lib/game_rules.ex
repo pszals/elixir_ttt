@@ -16,7 +16,7 @@ defmodule GameRules do
   end
 
   def winner_on_board?(board) do
-    true
+    Enum.any?(winning_combinations(board), fn(combo) -> all_same?(combo) end)
   end
 
   def winning_combinations(board) do
