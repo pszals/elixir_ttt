@@ -19,6 +19,10 @@ defmodule GameRules do
     Enum.any?(winning_combinations(board), fn(combo) -> all_same?(combo) end)
   end
 
+  def winning_piece(board) do
+    List.first(List.flatten(Enum.filter(winning_combinations(board), fn(combo) -> all_same?(combo) end)))
+  end
+
   def winning_combinations(board) do
     rows(board) ++ columns(board) ++ diagonals(board)
   end
