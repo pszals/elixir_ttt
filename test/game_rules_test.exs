@@ -6,10 +6,6 @@ defmodule GameRulesTest do
     assert(GameRules.whose_turn(["x", "o", 3, 4, 5, 6, 7, 8, 9], "x", "o") == "x")
   end
 
-  test "creates list of empty squares" do
-    assert(GameRules.empty_squares([1,2,3,4,5,6,7,8,"x"]) == [1,2,3,4,5,6,7,8])
-  end
-
   test "determines if there is a row of the same piece" do
     assert(GameRules.all_same?(["x", "x", "x"]) == true)
     assert(GameRules.all_same?(["o", "o", "o"]) == true)

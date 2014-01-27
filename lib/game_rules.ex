@@ -10,10 +10,6 @@ defmodule GameRules do
     end
   end
 
-  def empty_squares(board) do
-    Enum.filter(board, fn(square) -> is_number(square) end)
-  end
-
   def all_same?(row) do
     piece = List.first(row)
     Enum.all?(row, fn(square) -> square == piece end)
@@ -38,6 +34,7 @@ defmodule GameRules do
 
   def columns(board) do
     rows = rows(board)
+    rows_with_index = Enum.with_index(rows)
 
     [Enum.map(rows, fn(row) -> Enum.at(row, 0) end)] ++
     [Enum.map(rows, fn(row) -> Enum.at(row, 1) end)] ++
