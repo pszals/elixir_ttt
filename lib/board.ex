@@ -7,6 +7,10 @@ defmodule Board do
     is_number(Enum.at(board, (square - 1)))
   end
 
+  def place_piece(board, square, piece) do
+    List.replace_at(board, (square - 1), piece)
+  end
+
   def empty_squares(board) do
     Enum.filter(board, fn(square) -> is_number(square) end)
   end
