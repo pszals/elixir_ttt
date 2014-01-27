@@ -1,18 +1,22 @@
 defmodule GameRules do
-  def all_same?(row) do
-    piece = List.first(row)
-    Enum.all?(row, fn(x) -> x == piece end)
-  end
-
   def whose_turn(board, piece_one, piece_two) do
-    number_of_player_one_pieces = Enum.count(board, fn(x) -> x == piece_one end) 
-    number_of_player_two_pieces = Enum.count(board, fn(x) -> x == piece_two end) 
+    number_of_player_one_pieces = Enum.count(board, fn(square) -> square == piece_one end) 
+    number_of_player_two_pieces = Enum.count(board, fn(square) -> square == piece_two end) 
     cond do
       number_of_player_one_pieces == number_of_player_two_pieces ->
         piece_one
       true ->
         piece_two
     end
+  end
+
+  def empty_squares(board) do
+    Enum.filter(board, fn(square) -> is_number(square) end)
+  end
+
+  def all_same?(row) do
+    piece = List.first(row)
+    Enum.all?(row, fn(square) -> square == piece end)
   end
 
   def winner_on_board?(board) do
@@ -34,7 +38,6 @@ defmodule GameRules do
 
   def columns(board) do
     rows = rows(board)
-    rows_with_index = Enum.with_index(rows)
 
     [Enum.map(rows, fn(row) -> Enum.at(row, 0) end)] ++
     [Enum.map(rows, fn(row) -> Enum.at(row, 1) end)] ++
@@ -54,6 +57,6 @@ defmodule GameRules do
   defp diagonal_up(rows) do
     reversed_rows = Enum.map(rows, fn(row) -> Enum.reverse(row) end)
     reversed_rows_with_index = Enum.with_index(reversed_rows)
-    diagonal_up = Enum.map(reversed_rows_with_index, fn{row, index} -> Enum.at(row, index) end)
+    Enum.map(reversed_rows_with_index, fn{row, index} -> Enum.at(row, index) end)
   end
 end

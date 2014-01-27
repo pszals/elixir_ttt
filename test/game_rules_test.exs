@@ -1,18 +1,22 @@
 defmodule GameRulesTest do
   use ExUnit.Case
 
-  test "determines if there is a winner" do
+  test "determines whose turn it is" do
+    assert(GameRules.whose_turn(["x", 2, 3, 4, 5, 6, 7, 8, 9], "x", "o") == "o")
+    assert(GameRules.whose_turn(["x", "o", 3, 4, 5, 6, 7, 8, 9], "x", "o") == "x")
+  end
+
+  test "creates list of empty squares" do
+    assert(GameRules.empty_squares([1,2,3,4,5,6,7,8,"x"]) == [1,2,3,4,5,6,7,8])
+  end
+
+  test "determines if there is a row of the same piece" do
     assert(GameRules.all_same?(["x", "x", "x"]) == true)
     assert(GameRules.all_same?(["o", "o", "o"]) == true)
     assert(GameRules.all_same?(["R", "R", "R", "R"]) == true)
 
     assert(GameRules.all_same?(["x", "o", "x"]) == false)
     assert(GameRules.all_same?(["x", 2, "x"]) == false)
-  end
-
-  test "determines whose turn it is" do
-    assert(GameRules.whose_turn(["x", 2, 3, 4, 5, 6, 7, 8, 9], "x", "o") == "o")
-    assert(GameRules.whose_turn(["x", "o", 3, 4, 5, 6, 7, 8, 9], "x", "o") == "x")
   end
 
   test "determines if there is a winner one the board" do
