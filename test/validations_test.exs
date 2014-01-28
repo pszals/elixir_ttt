@@ -20,4 +20,14 @@ defmodule ValidationsTest do
     assert(valid_selection?("3", [1,2,3,4,5,6,7,8,9]) == true)
     assert(valid_selection?("1", ["x",2,3,4,5,6,7,8,9]) == false)
   end
+
+  test "validates if marker type entered is acceptable" do
+    assert(valid_marker?("i", nil) == true)
+    assert(valid_marker?("xo", "xx") == true)
+    assert(valid_marker?("xoz", nil) == false)
+  end
+
+  test "validates markers are not the same" do
+    assert(valid_marker?("xx", "xx") == false)
+  end
 end

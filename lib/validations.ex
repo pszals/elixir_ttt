@@ -13,11 +13,27 @@ defmodule Validations do
     end
   end
 
+  def valid_marker?(marker_one, marker_two) do
+    if same_markers?(marker_one, marker_two) do
+      false
+    else
+      contains_one_or_two_characters?(marker_one)
+    end
+  end
+
+  defp contains_one_or_two_characters?(marker) do
+      Regex.match?(%r/^[A-Za-z]{1,2}$/, marker)
+  end
+
   defp square_is_a_number?(square) do
     Integer.parse(square) != :error
   end
 
   defp square_on_board?(square, board) do
     length(board) >= Integer.parse(square) > 0
+  end
+
+  defp same_markers?(m1, m2) do
+    m1 == m2
   end
 end
