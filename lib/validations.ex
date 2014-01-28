@@ -17,11 +17,11 @@ defmodule Validations do
     if same_markers?(marker_one, marker_two) do
       false
     else
-      contains_one_or_two_characters?(marker_one)
+      contains_one_or_two_letters?(marker_one)
     end
   end
 
-  defp contains_one_or_two_characters?(marker) do
+  defp contains_one_or_two_letters?(marker) do
       Regex.match?(%r/^[A-Za-z]{1,2}$/, marker)
   end
 
