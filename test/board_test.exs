@@ -20,12 +20,22 @@ defmodule BoardTest do
     assert(Board.empty_squares([1,2,3,4,5,6,7,8,"x"]) == [1,2,3,4,5,6,7,8])
   end
 
+  test "determines if board is full" do
+    assert(Board.board_full?(["x", "x", "x", "o", "o", 6, 7, 8, 9]) == false)
+  end
+
   test "creates list of rows" do
     assert(Board.rows([1,2,3,4,5,6,7,8,9]) == [[1,2,3], [4,5,6], [7,8,9]])
     assert(Board.rows([1,2,3,4,"x",6,7,8,9]) == [[1,2,3], [4,"x",6], [7,8,9]])
   end
 
-  test "determines if board is full" do
-    assert(Board.board_full?(["x", "x", "x", "o", "o", 6, 7, 8, 9]) == false)
+  test "creates list of columns" do
+    assert(Board.columns([1,2,3,4,5,6,7,8,9]) == [[1, 4, 7], [2, 5, 8], [3, 6, 9]])
+    assert(Board.columns([1,2,3,4,5,6,7,8,"x"]) == [[1, 4, 7], [2, 5, 8], [3, 6, "x"]])
+  end
+
+  test "creates list of diagonals" do
+    assert(Board.diagonals([1,2,3,4,5,6,7,8,9]) == [[1, 5, 9], [3, 5, 7]])
+    assert(Board.diagonals(["x",2,3,4,5,6,7,8,9]) == [["x", 5, 9], [3, 5, 7]])
   end
 end

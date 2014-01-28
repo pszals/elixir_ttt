@@ -38,14 +38,4 @@ defmodule GameRulesTest do
         [3, 5, 7]
       ]) 
   end
-
-  test "creates list of columns" do
-    assert(GameRules.columns([1,2,3,4,5,6,7,8,9]) == [[1, 4, 7], [2, 5, 8], [3, 6, 9]])
-    assert(GameRules.columns([1,2,3,4,5,6,7,8,"x"]) == [[1, 4, 7], [2, 5, 8], [3, 6, "x"]])
-  end
-
-  test "creates list of diagonals" do
-    assert(GameRules.diagonals([1,2,3,4,5,6,7,8,9]) == [[1, 5, 9], [3, 5, 7]])
-    assert(GameRules.diagonals(["x",2,3,4,5,6,7,8,9]) == [["x", 5, 9], [3, 5, 7]])
-  end
 end

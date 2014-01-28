@@ -15,12 +15,36 @@ defmodule Board do
     Enum.filter(board, fn(square) -> is_number(square) end)
   end
 
+  def board_full?(board) do
+    empty_squares(board) == 0
+  end
+
   def rows(board) do
     row_size = Float.floor(:math.sqrt(length(board)))
     Enum.chunk(board, row_size)
   end
 
-  def board_full?(board) do
-    empty_squares(board) == 0
+  def columns(board) do
+    rows = Board.rows(board)
+    rows_with_index = Enum.with_index(rows)
+
+    [Enum.map(rows, fn(row) -> Enum.at(row, 0) end)] ++
+    [Enum.map(rows, fn(row) -> Enum.at(row, 1) end)] ++
+    [Enum.map(rows, fn(row) -> Enum.at(row, 2) end)]
+  end
+
+  def diagonals(board) do
+    rows = Board.rows(board)
+    [diagonal_down(rows)] ++ [diagonal_up(rows)]
+  end
+
+  defp diagonal_down(rows) do
+    Enum.with_index(rows) |> Enum.map(fn{row, index} -> Enum.at(row, index) end)
+  end
+
+  defp diagonal_up(rows) do
+    Enum.map(rows, fn(row) -> Enum.reverse(row) end) |>
+    Enum.with_index |>
+    Enum.map(fn{row, index} -> Enum.at(row, index) end)
   end
 end
