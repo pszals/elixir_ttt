@@ -16,7 +16,7 @@ defmodule GameRulesTest do
     assert(all_same?(["x", 2, "x"]) == false)
   end
 
-  test "determines if there is a winner one the board" do
+  test "determines if there is a winner on the board" do
     assert(winner_on_board?(["x", "x", "x", "o", "o", 6, 7, 8, 9]) == true)
     assert(winner_on_board?(["x", 2, 3, 4, 5, 6, 7, 8, 9]) == false)
   end
