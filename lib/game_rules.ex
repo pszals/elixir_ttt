@@ -1,9 +1,7 @@
 defmodule GameRules do
   def whose_turn(board, piece_one, piece_two) do
-    number_of_player_one_pieces = Enum.count(board, fn(square) -> square == piece_one end) 
-    number_of_player_two_pieces = Enum.count(board, fn(square) -> square == piece_two end) 
     cond do
-      number_of_player_one_pieces == number_of_player_two_pieces ->
+      number_of_pieces(board, piece_one) == number_of_pieces(board, piece_two) ->
         piece_one
       true ->
         piece_two
@@ -50,5 +48,9 @@ defmodule GameRules do
     reversed_rows = Enum.map(rows, fn(row) -> Enum.reverse(row) end)
     reversed_rows_with_index = Enum.with_index(reversed_rows)
     Enum.map(reversed_rows_with_index, fn{row, index} -> Enum.at(row, index) end)
+  end
+
+  defp number_of_pieces(board, piece) do
+    Enum.count(board, fn(square) -> square == piece end)
   end
 end
