@@ -1,5 +1,6 @@
 defmodule MessagesTest do
   use ExUnit.Case
+  import Messages
 
   test "welcomes player to game" do
   end
@@ -14,7 +15,7 @@ defmodule MessagesTest do
   end
 
   test "displays 3x3 board" do
-    assert(Messages.format_board(["RR",2,3,4,"x",6,7,8,9]) == 
+    assert(format_board(["RR",2,3,4,"x",6,7,8,9]) == 
     "  RR |  2  |  3  \n" <>
     "-----+-----+-----\n" <>
     "  4  |  x  |  6  \n" <>
@@ -23,7 +24,7 @@ defmodule MessagesTest do
   end
     
   test "displays 4x4 board" do
-    assert(Messages.format_board(["QQ",2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]) == 
+    assert(format_board(["QQ",2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]) == 
     "  QQ |  2  |  3  |  4  \n" <>
     "-----+-----+-----+-----\n" <>
     "  5  |  6  |  7  |  8  \n" <>

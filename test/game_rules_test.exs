@@ -1,32 +1,33 @@
 defmodule GameRulesTest do
   use ExUnit.Case
+  import GameRules
 
   test "determines whose turn it is" do
-    assert(GameRules.whose_turn(["x", 2, 3, 4, 5, 6, 7, 8, 9], "x", "o") == "o")
-    assert(GameRules.whose_turn(["x", "o", 3, 4, 5, 6, 7, 8, 9], "x", "o") == "x")
+    assert(whose_turn(["x", 2, 3, 4, 5, 6, 7, 8, 9], "x", "o") == "o")
+    assert(whose_turn(["x", "o", 3, 4, 5, 6, 7, 8, 9], "x", "o") == "x")
   end
 
   test "determines if there is a row of the same piece" do
-    assert(GameRules.all_same?(["x", "x", "x"]) == true)
-    assert(GameRules.all_same?(["o", "o", "o"]) == true)
-    assert(GameRules.all_same?(["R", "R", "R", "R"]) == true)
+    assert(all_same?(["x", "x", "x"]) == true)
+    assert(all_same?(["o", "o", "o"]) == true)
+    assert(all_same?(["R", "R", "R", "R"]) == true)
 
-    assert(GameRules.all_same?(["x", "o", "x"]) == false)
-    assert(GameRules.all_same?(["x", 2, "x"]) == false)
+    assert(all_same?(["x", "o", "x"]) == false)
+    assert(all_same?(["x", 2, "x"]) == false)
   end
 
   test "determines if there is a winner one the board" do
-    assert(GameRules.winner_on_board?(["x", "x", "x", "o", "o", 6, 7, 8, 9]) == true)
-    assert(GameRules.winner_on_board?(["x", 2, 3, 4, 5, 6, 7, 8, 9]) == false)
+    assert(winner_on_board?(["x", "x", "x", "o", "o", 6, 7, 8, 9]) == true)
+    assert(winner_on_board?(["x", 2, 3, 4, 5, 6, 7, 8, 9]) == false)
   end
 
   test "determines the winning piece if a winner is on board" do
-    assert(GameRules.winning_piece(["x", "x", "x", "o", "o", 6, 7, 8, 9]) == "x")
-    assert(GameRules.winning_piece(["o", "o", "o", "x", "x", 6, 7, 8, 9]) == "o")
+    assert(winning_piece(["x", "x", "x", "o", "o", 6, 7, 8, 9]) == "x")
+    assert(winning_piece(["o", "o", "o", "x", "x", 6, 7, 8, 9]) == "o")
   end
 
   test "creates list of winning combinations" do
-    assert(GameRules.winning_combinations([1, 2, 3, 4, 5, 6, 7, 8, 9]) ==
+    assert(winning_combinations([1, 2, 3, 4, 5, 6, 7, 8, 9]) ==
       [
         [1, 2, 3],
         [4, 5, 6],
