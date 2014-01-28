@@ -15,6 +15,11 @@ defmodule Board do
     Enum.filter(board, fn(square) -> is_number(square) end)
   end
 
+  def rows(board) do
+    row_size = Float.floor(:math.sqrt(length(board)))
+    Enum.chunk(board, row_size)
+  end
+
   def board_full?(board) do
     empty_squares(board) == 0
   end

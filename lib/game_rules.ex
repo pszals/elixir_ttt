@@ -24,16 +24,11 @@ defmodule GameRules do
   end
 
   def winning_combinations(board) do
-    rows(board) ++ columns(board) ++ diagonals(board)
-  end
-
-  def rows(board) do
-    row_size = Float.floor(:math.sqrt(length(board)))
-    Enum.chunk(board, row_size)
+    Board.rows(board) ++ columns(board) ++ diagonals(board)
   end
 
   def columns(board) do
-    rows = rows(board)
+    rows = Board.rows(board)
     rows_with_index = Enum.with_index(rows)
 
     [Enum.map(rows, fn(row) -> Enum.at(row, 0) end)] ++
@@ -42,7 +37,7 @@ defmodule GameRules do
   end
 
   def diagonals(board) do
-    rows = rows(board)
+    rows = Board.rows(board)
     [diagonal_down(rows)] ++ [diagonal_up(rows)]
   end
 

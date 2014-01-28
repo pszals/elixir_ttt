@@ -39,11 +39,6 @@ defmodule GameRulesTest do
       ]) 
   end
 
-  test "creates list of rows" do
-    assert(GameRules.rows([1,2,3,4,5,6,7,8,9]) == [[1,2,3], [4,5,6], [7,8,9]])
-    assert(GameRules.rows([1,2,3,4,"x",6,7,8,9]) == [[1,2,3], [4,"x",6], [7,8,9]])
-  end
-
   test "creates list of columns" do
     assert(GameRules.columns([1,2,3,4,5,6,7,8,9]) == [[1, 4, 7], [2, 5, 8], [3, 6, 9]])
     assert(GameRules.columns([1,2,3,4,5,6,7,8,"x"]) == [[1, 4, 7], [2, 5, 8], [3, 6, "x"]])
