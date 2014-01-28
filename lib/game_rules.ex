@@ -1,4 +1,18 @@
 defmodule GameRules do
+  import Enum, only: 
+    [
+      all?: 2,
+      any?: 2,
+      count: 2,
+      filter: 2,
+    ]
+
+  import List, only:
+    [
+       first: 1, 
+       flatten: 1,
+    ]
+
   def whose_turn(board, piece_one, piece_two) do
     if number_of_pieces(board, piece_one) == number_of_pieces(board, piece_two) do
       piece_one
@@ -8,18 +22,18 @@ defmodule GameRules do
   end
 
   def all_same?(row) do
-    piece = List.first(row)
-    Enum.all?(row, fn(square) -> square == piece end)
+    piece = first(row)
+    all?(row, fn(square) -> square == piece end)
   end
 
   def winner_on_board?(board) do
-    Enum.any?(winning_combinations(board), fn(combo) -> all_same?(combo) end)
+    any?(winning_combinations(board), fn(combo) -> all_same?(combo) end)
   end
 
   def winning_piece(board) do
-    Enum.filter(winning_combinations(board), fn(combo) -> all_same?(combo) end) |> 
-    List.flatten |> 
-    List.first
+    filter(winning_combinations(board), fn(combo) -> all_same?(combo) end) |> 
+    flatten |> 
+    first
   end
 
   def winning_combinations(board) do
@@ -27,6 +41,6 @@ defmodule GameRules do
   end
 
   defp number_of_pieces(board, piece) do
-    Enum.count(board, fn(square) -> square == piece end)
+    count(board, fn(square) -> square == piece end)
   end
 end
