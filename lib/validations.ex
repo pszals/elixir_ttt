@@ -1,8 +1,10 @@
 defmodule Validations do
   import Board, only: [square_empty?: 2]
+  import Constants, only: [acceptable_responses: 0]
 
   def valid_response?(response) do
-    response == "y" or response == "n"
+    acceptable_responses |>
+    Enum.any?(fn(input) -> response == input end)
   end
 
   def valid_selection?(square, board) do

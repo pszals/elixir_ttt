@@ -4,10 +4,12 @@ defmodule ValidationsTest do
 
   test "validates a response for 'yes'" do
     assert(valid_response?("y") == true)
+    assert(valid_response?("yes") == true)
   end
 
   test "validates a response for 'no'" do
     assert(valid_response?("n") == true)
+    assert(valid_response?("no") == true)
   end
 
   test "validates a response for 'asdfp09u'" do
