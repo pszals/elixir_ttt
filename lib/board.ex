@@ -11,6 +11,10 @@ defmodule Board do
     List.replace_at(board, (square - 1), piece)
   end
 
+  def remove_piece(board, index) do
+    List.replace_at(board, index, index + 1)
+  end
+
   def empty_squares(board) do
     Enum.filter(board, fn(square) -> is_number(square) end)
   end

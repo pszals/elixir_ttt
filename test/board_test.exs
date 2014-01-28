@@ -16,6 +16,10 @@ defmodule BoardTest do
       ["x", "x", "x", "o", "o", "o", 7, 8, 9])
   end
 
+  test "removes a piece from the board" do
+    assert(Board.remove_piece(["x", "x", "x", "o", "o", 6, 7, 8, 9], 0) == [1, "x", "x", "o", "o", 6, 7, 8, 9])
+  end
+
   test "creates list of empty squares" do
     assert(Board.empty_squares([1,2,3,4,5,6,7,8,"x"]) == [1,2,3,4,5,6,7,8])
   end
