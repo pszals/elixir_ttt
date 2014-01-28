@@ -2,8 +2,9 @@
 
 To get this up and running, you must first install Erlang and Elixir:
 
-1. ```brew install erlang```
-2. ```brew install elixir```
+1. ```brew update```
+2. ```brew install erlang```
+3. ```brew install elixir```
 
 To Test:
 
