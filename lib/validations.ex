@@ -1,11 +1,13 @@
 defmodule Validations do
+  import Board, only: [square_empty?: 2]
+
   def valid_response?(response) do
     response == "y" or response == "n"
   end
 
   def valid_selection?(square, board) do
     if square_is_a_number?(square) and square_on_board?(square, board) do
-      Board.square_empty?(board, binary_to_integer(square))
+      square_empty?(board, binary_to_integer(square))
     end
   end
 
