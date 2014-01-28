@@ -39,7 +39,8 @@ defmodule Board do
   end
 
   defp diagonal_down(rows) do
-    Enum.with_index(rows) |> Enum.map(fn{row, index} -> Enum.at(row, index) end)
+    Enum.with_index(rows) |> 
+    Enum.map(fn{row, index} -> Enum.at(row, index) end)
   end
 
   defp diagonal_up(rows) do

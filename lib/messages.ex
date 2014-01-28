@@ -1,16 +1,30 @@
 defmodule Messages do
-  def display_board(board) do
-    rows = Board.rows(board)
-    Enum.map(rows, fn(row) -> format_row(row) end)
+  def format_board(board) do
+    Enum.map(board, fn(square) -> add_padding(square) end) |>
+    Board.rows |>
+    Enum.map(fn(row) -> Enum.join(row, BoardParts.pipe) end) |>
+    Enum.join(row_divider(board))
   end
 
-  defp format_row([h|t]) do
-    square_one = " " <> to_string(h) <> " "
-    format_internal_square(square_one, t, 1)
+  defp add_padding(square) do
+    if one_character?(square) do
+      BoardParts.double_padding <> to_string(square) <> BoardParts.double_padding
+    else
+      BoardParts.double_padding <> to_string(square) <> BoardParts.single_padding
+    end
   end
 
-  defp format_internal_square(first, [h|t], acc) do
-    format_row(first <> "| " <> to_string(h) <> " |",  acc + 1)
-    first
+  defp row_divider(board) do
+    number_of_crosshairs = Float.floor(:math.sqrt(length(board))) -1
+    List.duplicate(BoardParts.crosshair, number_of_crosshairs) |>
+    join_crosshairs
+  end
+
+  defp join_crosshairs(list_of_crosshairs) do
+    BoardParts.newline_row_divider <> Enum.join(list_of_crosshairs, BoardParts.row_divider) <> BoardParts.row_divider_newline
+  end
+
+  defp one_character?(square) do
+    String.length(to_string(square)) == 1
   end
 end
