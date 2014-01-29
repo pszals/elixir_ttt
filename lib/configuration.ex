@@ -4,8 +4,7 @@ defmodule Configuration do
   def configure_game(io) do
     configurations = HashDict.new
     width = configure_width(io)
-    piece_one = configure_piece_one(io)
-    piece_two = configure_piece_two(io, piece_one)
+    {piece_one, piece_two} = configure_pieces(io)
 
     configurations = HashDict.put(configurations, :width, width) 
     configurations = HashDict.put(configurations, :piece_one, piece_one) 
@@ -23,23 +22,23 @@ defmodule Configuration do
     end
   end
 
-  defp configure_piece_one(io) do
+  defp configure_pieces(io) do
     piece_one = io.get_piece_one(query_for_markers)
     if Validations.valid_marker?(piece_one, nil) do
-      piece_one
+      configure_pieces(io, piece_one)
     else
       io.display(error_width)
-      configure_piece_one(io)
+      configure_pieces(io)
     end
   end
   
-  defp configure_piece_two(io, piece_one) do
+  defp configure_pieces(io, piece_one) do
     piece_two = io.get_piece_two(query_for_markers)
     if Validations.valid_marker?(piece_one, piece_two) do
-      piece_two
+      {piece_one, piece_two}
     else
       io.display(error_width)
-      configure_piece_two(io, piece_one)
+      configure_pieces(io, piece_one)
     end
   end
 end
