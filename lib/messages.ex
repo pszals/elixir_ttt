@@ -1,16 +1,4 @@
 defmodule Messages do
-  def display(io, message) do
-    io.display(message)
-  end
-
-  def get_width(io, prompt) do
-    io.get_width(prompt)
-  end
-
-  def get_move(io, prompt) do
-    io.get_width(prompt)
-  end
-
   def welcome do
     "Welcome to Tic Tac Toe running on Elixir!"
   end
@@ -61,9 +49,5 @@ defmodule Messages do
 
   def query_for_replay do
     "Would you like to play again?"
-  end
-
-  defp remove_trailing_newline(string) do
-    String.strip(string)
   end
 end

@@ -1,9 +1,13 @@
 defmodule MockIo do
-  def get_width(prompt) do
+  def display(message) do
+    message
+  end
+
+  def get_width(_) do
     "3"
   end
 
-  def display(message) do
-    message
+  def get_move(_) do
+    "3"
   end
 end

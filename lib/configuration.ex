@@ -9,11 +9,11 @@ defmodule Configuration do
 
   defp configure_width(io) do
     width = io.get_width("")
-    display(io, query_for_board_width)
+    io.display(query_for_board_width)
     if Validations.valid_width?(width) do
       width 
     else
-      display(io, error_width)
+      io.display(error_width)
       configure_width(io)
     end
   end

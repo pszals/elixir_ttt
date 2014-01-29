@@ -2,14 +2,6 @@ defmodule MessagesTest do
   use ExUnit.Case
   import Messages
 
-  test "displays a message" do
-    assert(display(MockIo, "Hello") == "Hello")
-  end
-
-  test "gets width" do
-    assert(get_width(MockIo, "") == "3")
-  end
-
   test "welcomes player to game" do
     assert(welcome == "Welcome to Tic Tac Toe running on Elixir!")
   end
