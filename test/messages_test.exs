@@ -2,6 +2,10 @@ defmodule MessagesTest do
   use ExUnit.Case
   import Messages
 
+  test "displays a message" do
+    assert(display(MockIO, "Hello") == "Hello")
+  end
+
   test "welcomes player to game" do
     assert(welcome == "Welcome to Tic Tac Toe running on Elixir!")
   end

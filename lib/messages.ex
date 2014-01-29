@@ -1,4 +1,8 @@
 defmodule Messages do
+  def display(io, message) do
+    io.puts(message)
+  end
+
   def welcome do
     "Welcome to Tic Tac Toe running on Elixir!"
   end
