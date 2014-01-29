@@ -3,6 +3,10 @@ defmodule Messages do
     io.puts(message)
   end
 
+  def get_input(io, prompt) do
+    remove_trailing_newline(io.gets(:stdio, prompt))
+  end
+
   def welcome do
     "Welcome to Tic Tac Toe running on Elixir!"
   end
@@ -53,5 +57,9 @@ defmodule Messages do
 
   def query_for_replay do
     "Would you like to play again?"
+  end
+
+  defp remove_trailing_newline(string) do
+    String.strip(string)
   end
 end

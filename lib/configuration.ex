@@ -8,7 +8,7 @@ defmodule Configuration do
   end
 
   defp configure_width(io) do
-    width = io.gets
+    width = get_input(io, "")
     display(io, query_for_board_width)
     if Validations.valid_width?(width) do
       width 

@@ -1,6 +1,6 @@
 defmodule MockIO do
-  def gets do
-    "3"
+  def gets(io_device, prompt) do
+    "3\n"
   end
 
   def puts(message) do

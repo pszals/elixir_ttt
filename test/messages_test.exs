@@ -6,6 +6,10 @@ defmodule MessagesTest do
     assert(display(MockIO, "Hello") == "Hello")
   end
 
+  test "gets input" do
+    assert(get_input(MockIO, "") == "3")
+  end
+
   test "welcomes player to game" do
     assert(welcome == "Welcome to Tic Tac Toe running on Elixir!")
   end
