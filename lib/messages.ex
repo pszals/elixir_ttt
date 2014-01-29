@@ -8,7 +8,7 @@ defmodule Messages do
   end
 
   def query_for_markers do
-    "Enter any letter of the English alphabet to serve as your marker"
+    "Enter any letter (or two letters!) of the English alphabet to serve as a marker"
   end
 
   def query_for_first_player do

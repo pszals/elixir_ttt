@@ -16,6 +16,14 @@ defmodule RealIo do
     remove_trailing_newline(gets(prompt))
   end
 
+  def get_piece_one(prompt) do
+    remove_trailing_newline(gets(prompt))
+  end
+
+  def get_piece_two(prompt) do
+    remove_trailing_newline(gets(prompt))
+  end
+
   defp remove_trailing_newline(string) do
     String.strip(string)
   end
