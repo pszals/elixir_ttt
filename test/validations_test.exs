@@ -17,8 +17,8 @@ defmodule ValidationsTest do
   end
 
   test "validates if selection is available" do
-    assert(valid_selection?("3", [1,2,3,4,5,6,7,8,9]) == true)
-    assert(valid_selection?("1", ["x",2,3,4,5,6,7,8,9]) == false)
+    assert(valid_move?("3", [1,2,3,4,5,6,7,8,9]) == true)
+    assert(valid_move?("1", ["x",2,3,4,5,6,7,8,9]) == false)
   end
 
   test "validates if marker type entered is acceptable" do

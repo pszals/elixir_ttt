@@ -8,18 +8,15 @@ defmodule Validations do
     Enum.any?(fn(input) -> response == input end)
   end
 
-  def valid_selection?(square, board) do
-    if square_is_a_number?(square) and square_on_board?(square, board) do
-      square_empty?(board, binary_to_integer(square))
-    end
+  def valid_move?(square, board) do
+    square_is_a_number?(square) and 
+    square_on_board?(square, board) and 
+    square_empty?(board, binary_to_integer(square))
   end
 
   def valid_marker?(marker_one, marker_two) do
-    if same_markers?(marker_one, marker_two) do
-      false
-    else
-      contains_one_or_two_letters?(marker_one)
-    end
+    !same_markers?(marker_one, marker_two) and
+    contains_one_or_two_letters?(marker_one)
   end
 
   defp contains_one_or_two_letters?(marker) do
