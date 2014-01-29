@@ -1,5 +1,6 @@
 defmodule Configuration do
   import Messages
+  import Validations
 
   def configure_game(io) do
     configurations = HashDict.new
@@ -14,7 +15,7 @@ defmodule Configuration do
   defp configure_width(io) do
     width = io.get_width("")
     io.display(query_for_board_width)
-    if Validations.valid_width?(width) do
+    if valid_width?(width) do
       width 
     else
       io.display(error_width)
@@ -24,7 +25,7 @@ defmodule Configuration do
 
   defp configure_pieces(io) do
     piece_one = io.get_piece_one(query_for_markers)
-    if Validations.valid_marker?(piece_one, nil) do
+    if valid_marker?(piece_one, nil) do
       configure_pieces(io, piece_one)
     else
       io.display(error_width)
@@ -34,7 +35,7 @@ defmodule Configuration do
   
   defp configure_pieces(io, piece_one) do
     piece_two = io.get_piece_two(query_for_markers)
-    if Validations.valid_marker?(piece_one, piece_two) do
+    if valid_marker?(piece_one, piece_two) do
       {piece_one, piece_two}
     else
       io.display(error_width)
