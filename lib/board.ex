@@ -9,7 +9,10 @@ defmodule Board do
     to_list: 1, 
     with_index: 1,
     ]
-  import List, only: [replace_at: 3]
+  import List, only: [
+    replace_at: 3,
+    unzip: 1,
+    ]
 
   def create_board(width) do
     to_list(1 .. (width * width))
@@ -42,11 +45,7 @@ defmodule Board do
 
   def columns(board) do
     rows = rows(board)
-    rows_with_index = with_index(rows)
-
-    [map(rows, fn(row) -> at(row, 0) end)] ++
-    [map(rows, fn(row) -> at(row, 1) end)] ++
-    [map(rows, fn(row) -> at(row, 2) end)]
+    unzip(rows)
   end
 
   def diagonals(board) do
