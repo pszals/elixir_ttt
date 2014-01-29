@@ -11,7 +11,7 @@ defmodule MessagesTest do
   end
 
   test "asks for marker types" do
-    assert(query_for_markers == "Enter any letter of the English alphabet to serve as your marker") 
+    assert(query_for_markers == "Enter any letter (or two letters!) of the English alphabet to serve as a marker") 
   end
 
   test "asks which marker goes first" do

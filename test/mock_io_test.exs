@@ -13,4 +13,8 @@ defmodule MockIoTest do
   test "gets move" do
     assert(get_move("") == "3")
   end
+  
+  test "gets piece one" do
+    assert(get_piece_one("") == "Q")
+  end
 end
