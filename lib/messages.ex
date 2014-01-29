@@ -7,6 +7,10 @@ defmodule Messages do
     "Welcome to Tic Tac Toe running on Elixir!"
   end
 
+  def query_for_board_width do
+    "Enter 3 (quick) for a 3x3 game or 4 (slower) for a 4x4 game"
+  end
+
   def query_for_markers do
     "Enter any letter of the English alphabet to serve as your marker"
   end
@@ -28,7 +32,11 @@ defmodule Messages do
   end
 
   def error_not_number do
-    "That is not a number. enter the number of an empty square on the board"
+    "That is not a number. Enter the number of an empty square on the board"
+  end
+  
+  def error_width do
+    "That is not a valid board width. Try just entering 3."
   end
 
   def game_over do

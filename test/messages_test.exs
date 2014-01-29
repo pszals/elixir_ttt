@@ -10,6 +10,10 @@ defmodule MessagesTest do
     assert(welcome == "Welcome to Tic Tac Toe running on Elixir!")
   end
 
+  test "asks for board width" do
+    assert(query_for_board_width == "Enter 3 (quick) for a 3x3 game or 4 (slower) for a 4x4 game")
+  end
+
   test "asks for marker types" do
     assert(query_for_markers == "Enter any letter of the English alphabet to serve as your marker") 
   end
@@ -31,7 +35,11 @@ defmodule MessagesTest do
   end
 
   test "gives error message if input is not a number" do
-    assert(error_not_number == "That is not a number. enter the number of an empty square on the board")
+    assert(error_not_number == "That is not a number. Enter the number of an empty square on the board")
+  end
+
+  test "gives error message if width is invalid" do
+    assert(error_width == "That is not a valid board width. Try just entering 3.")
   end
 
   test "announces end of game" do
