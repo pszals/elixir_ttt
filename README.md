@@ -12,4 +12,5 @@ To Test:
 
 To Run:
 
-```work in progress```
+```iex -S mix```
+```Runner.start```

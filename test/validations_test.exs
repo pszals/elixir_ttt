@@ -3,17 +3,17 @@ defmodule ValidationsTest do
   import Validations
 
   test "validates a response for 'yes'" do
-    assert(valid_response?("y") == true)
-    assert(valid_response?("yes") == true)
+    assert(yes_or_no?("y") == true)
+    assert(yes_or_no?("yes") == true)
   end
 
   test "validates a response for 'no'" do
-    assert(valid_response?("n") == true)
-    assert(valid_response?("no") == true)
+    assert(yes_or_no?("n") == true)
+    assert(yes_or_no?("no") == true)
   end
 
   test "validates a response for 'asdfp09u'" do
-    assert(valid_response?("asdfp09u") == false)
+    assert(yes_or_no?("asdfp09u") == false)
   end
 
   test "validates if selection is available" do

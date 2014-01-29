@@ -3,7 +3,7 @@ defmodule Validations do
   import Constants, only: [yes_or_no: 0]
   import Integer, only: [parse: 1]
 
-  def valid_response?(response) do
+  def yes_or_no?(response) do
     yes_or_no |>
     Enum.any?(fn(input) -> response == input end)
   end
