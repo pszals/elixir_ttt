@@ -19,6 +19,10 @@ defmodule Validations do
     contains_one_or_two_letters?(marker_one)
   end
 
+  def valid_width?(width) do
+    in_range?(binary_to_integer(width))
+  end
+
   defp contains_one_or_two_letters?(marker) do
       Regex.match?(%r/^[A-Za-z]{1,2}$/, marker)
   end
@@ -33,5 +37,9 @@ defmodule Validations do
 
   defp same_markers?(m1, m2) do
     m1 == m2
+  end
+
+  defp in_range?(width) do
+    5 > width > 2
   end
 end
