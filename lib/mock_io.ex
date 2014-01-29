@@ -1,6 +1,6 @@
 defmodule MockIO do
   def gets do
-    "1"
+    "3"
   end
 
   def puts(message) do

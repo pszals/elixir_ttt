@@ -30,4 +30,8 @@ defmodule ValidationsTest do
   test "validates markers are not the same" do
     assert(valid_marker?("xx", "xx") == false)
   end
+
+  test "validates width of board" do
+    assert(valid_width?("3") == true)
+  end
 end
