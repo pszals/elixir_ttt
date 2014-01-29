@@ -1,0 +1,2 @@
+defprotocol Players do
+end
