@@ -1,6 +1,7 @@
 defmodule Validations do
   import Board, only: [square_empty?: 2]
   import Constants, only: [acceptable_responses: 0]
+  import Integer, only: [parse: 1]
 
   def valid_response?(response) do
     acceptable_responses |>
@@ -26,11 +27,11 @@ defmodule Validations do
   end
 
   defp square_is_a_number?(square) do
-    Integer.parse(square) != :error
+    parse(square) != :error
   end
 
   defp square_on_board?(square, board) do
-    length(board) >= Integer.parse(square) > 0
+    length(board) >= parse(square) > 0
   end
 
   defp same_markers?(m1, m2) do
