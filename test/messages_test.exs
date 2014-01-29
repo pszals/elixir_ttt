@@ -3,11 +3,11 @@ defmodule MessagesTest do
   import Messages
 
   test "displays a message" do
-    assert(display(MockIO, "Hello") == "Hello")
+    assert(display(MockIo, "Hello") == "Hello")
   end
 
-  test "gets input" do
-    assert(get_input(MockIO, "") == "3")
+  test "gets width" do
+    assert(get_width(MockIo, "") == "3")
   end
 
   test "welcomes player to game" do

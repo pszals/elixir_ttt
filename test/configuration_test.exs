@@ -3,11 +3,7 @@ defmodule ConfigurationTest do
   import Configuration
 
   test "gets configuration variables" do
-    configurations = configure_game(MockIO)
+    configurations = configure_game(MockIo)
     assert(HashDict.get(configurations, :width) == "3")
   end
-
-# test "what does the fox say" do
-#   assert("3" == String.strip(IO.gets(:stdio)))
-# end
 end

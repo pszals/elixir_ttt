@@ -1,10 +1,14 @@
 defmodule Messages do
   def display(io, message) do
-    io.puts(message)
+    io.display(message)
   end
 
-  def get_input(io, prompt) do
-    remove_trailing_newline(io.gets(:stdio, prompt))
+  def get_width(io, prompt) do
+    io.get_width(prompt)
+  end
+
+  def get_move(io, prompt) do
+    io.get_width(prompt)
   end
 
   def welcome do
