@@ -25,6 +25,9 @@ defmodule GameRulesTest do
   test "determines the winning piece if a winner is on board" do
     assert(winning_piece(["x", "x", "x", "o", "o", 6, 7, 8, 9]) == "x")
     assert(winning_piece(["o", "o", "o", "x", "x", 6, 7, 8, 9]) == "o")
+    assert(winning_piece(["x","x","o",
+                          "o","o","x",
+                          "x","x","o"]) == nil)
   end
 
   test "creates list of winning combinations" do
