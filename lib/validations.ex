@@ -25,7 +25,7 @@ defmodule Validations do
 
   def valid_player_type?(selection) do
     is_a_number?(selection) and
-    valid_selection?(binary_to_integer(selection))
+    valid_selection?(selection)
   end
 
   defp contains_one_or_two_letters?(marker) do
@@ -49,6 +49,6 @@ defmodule Validations do
   end
 
   defp valid_selection?(selection) do
-    selection == 1 or selection == 2
+    selection == Constants.human_player or selection == Constants.computer_player
   end
 end

@@ -9,11 +9,11 @@ defmodule Configuration do
 
   def configure_game(io) do
     configurations = HashDict.new
-    width = configure_width(io)
+    board = configure_board(io)
     {piece_one, piece_two} = configure_pieces(io)
     {player_one_type, player_two_type} = configure_player_types(io)
 
-    configurations = HashDict.put(configurations, :width, width) 
+    configurations = HashDict.put(configurations, :board, board) 
     configurations = HashDict.put(configurations, :piece_one, piece_one) 
     configurations = HashDict.put(configurations, :piece_two, piece_two) 
     configurations = HashDict.put(configurations, :player_one_type, player_one_type) 
@@ -21,14 +21,14 @@ defmodule Configuration do
     configurations
   end
 
-  defp configure_width(io) do
+  defp configure_board(io) do
     width = io.get_width("")
     io.display(query_for_board_width)
     if valid_width?(width) do
-      width 
+      Board.create_board(binary_to_integer(width)) 
     else
       io.display(error_width)
-      configure_width(io)
+      configure_board(io)
     end
   end
 
