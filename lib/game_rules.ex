@@ -40,6 +40,10 @@ defmodule GameRules do
     Board.rows(board) ++ Board.columns(board) ++ Board.diagonals(board)
   end
 
+  def game_over?(board) do
+    winner_on_board?(board) or Board.board_full?(board)   
+  end
+
   defp number_of_pieces(board, piece) do
     count(board, fn(square) -> square == piece end)
   end

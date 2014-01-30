@@ -40,4 +40,12 @@ defmodule GameRulesTest do
         [3, 5, 7]
       ]) 
   end
+
+  test "knows when game is over" do
+    assert(game_over?([1,2,3,4,5,6,7,8,9]) == false)
+    assert(game_over?(["x", "x", "x", "o", "o", 6, 7, 8, 9]) == true)
+    assert(game_over?(["x","x","o",
+                       "o","o","x",
+                       "x","x","o"]) == true)
+  end
 end

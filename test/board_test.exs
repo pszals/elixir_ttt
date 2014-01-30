@@ -27,6 +27,9 @@ defmodule BoardTest do
 
   test "determines if board is full" do
     assert(board_full?(["x", "x", "x", "o", "o", 6, 7, 8, 9]) == false)
+    assert(board_full?(["x","x","o",
+                       "o","o","x",
+                       "x","x","o"]) == true)
   end
 
   test "creates list of rows" do

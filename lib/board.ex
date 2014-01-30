@@ -1,17 +1,19 @@
 defmodule Board do
   import Enum, only: 
-  [
-    at: 2,
-    chunk: 2, 
-    filter: 2, 
-    map: 2,
-    reverse: 1,
-    to_list: 1, 
-    with_index: 1,
+    [
+      at: 2,
+      chunk: 2, 
+      count: 1,
+      filter: 2, 
+      map: 2,
+      reverse: 1,
+      to_list: 1, 
+      with_index: 1,
     ]
-  import List, only: [
-    replace_at: 3,
-    unzip: 1,
+  import List, only: 
+    [
+      replace_at: 3,
+      unzip: 1,
     ]
 
   def create_board(width) do
@@ -35,7 +37,8 @@ defmodule Board do
   end
 
   def board_full?(board) do
-    empty_squares(board) == 0
+    empty_squares(board) |>
+    count == 0
   end
 
   def rows(board) do
