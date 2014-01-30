@@ -22,8 +22,7 @@ defmodule Configuration do
   end
 
   defp configure_board(io) do
-    width = io.get_width("")
-    io.display(query_for_board_width)
+    width = io.get_width(query_for_board_width)
     if valid_width?(width) do
       Board.create_board(binary_to_integer(width)) 
     else
