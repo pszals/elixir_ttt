@@ -19,6 +19,7 @@ defmodule GameRulesTest do
   test "determines if there is a winner on the board" do
     assert(winner_on_board?(["x", "x", "x", "o", "o", 6, 7, 8, 9]) == true)
     assert(winner_on_board?(["x", 2, 3, 4, 5, 6, 7, 8, 9]) == false)
+    assert(winner_on_board?(["x", 2, 3, "x", 5, 6, "x", 8, 9]) == true)
   end
 
   test "determines the winning piece if a winner is on board" do
