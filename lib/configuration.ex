@@ -1,6 +1,11 @@
 defmodule Configuration do
   import Messages
-  import Validations
+  import Validations, only:
+    [
+      valid_width?: 1,
+      valid_marker?: 2,
+      valid_player_type?: 1,
+    ]
 
   def configure_game(io) do
     configurations = HashDict.new
@@ -58,9 +63,9 @@ defmodule Configuration do
   end
 
   defp configure_player_types(io, player_one_type) do
-    player_type = io.get_player_type(query_for_player_type)
-    if valid_player_type?(player_type) do
-      {player_one_type, player_type}
+    player_two_type = io.get_player_type(query_for_player_type)
+    if valid_player_type?(player_two_type) do
+      {player_one_type, player_two_type}
     else
       io.display(error_not_valid_player_type)
       configure_player_types(io, player_one_type)
