@@ -15,4 +15,10 @@ defmodule AiTest do
                        "o","o","x",
                        "x","x","o"], "x") == 0)
   end
+
+  test "generates next level of moves given a piece and board" do
+    assert(generate_next_level("x", ["x","x","o","o","o","x","x", 8,  9]) == 
+                      [["x","x","o","o","o","x","x",8,"x"], 
+                       ["x","x","o","o","o","x","x","x",9]]) 
+  end
 end
