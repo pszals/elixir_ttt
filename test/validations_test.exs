@@ -33,6 +33,8 @@ defmodule ValidationsTest do
 
   test "validates width of board" do
     assert(valid_width?("3") == true)
+    assert(valid_width?("2") == false)
+    assert(valid_width?("df") == false)
   end
 
   test "validates selection of player types" do

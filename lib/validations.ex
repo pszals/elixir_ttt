@@ -20,6 +20,7 @@ defmodule Validations do
   end
 
   def valid_width?(width) do
+    is_a_number?(width) and
     in_board_range?(binary_to_integer(width))
   end
 
@@ -45,7 +46,7 @@ defmodule Validations do
   end
 
   defp in_board_range?(width) do
-    5 > width > 2
+    5 > width and width  > 2
   end
 
   defp valid_selection?(selection) do
