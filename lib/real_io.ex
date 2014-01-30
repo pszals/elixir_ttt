@@ -9,19 +9,23 @@ defmodule RealIo do
   end
 
   def get_input(prompt) do
-    remove_trailing_newline(gets(prompt))
+    gets(prompt) |>
+    remove_trailing_newline
   end
 
   def get_width(prompt) do
-    remove_trailing_newline(gets(prompt))
+    gets(prompt) |>
+    remove_trailing_newline
   end
 
   def get_piece_one(prompt) do
-    remove_trailing_newline(gets(prompt))
+    gets(prompt) |>
+    remove_trailing_newline
   end
 
   def get_piece_two(prompt) do
-    remove_trailing_newline(gets(prompt))
+    gets(prompt) |>
+    remove_trailing_newline
   end
 
   defp remove_trailing_newline(string) do
