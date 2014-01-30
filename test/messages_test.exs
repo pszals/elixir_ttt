@@ -14,6 +14,10 @@ defmodule MessagesTest do
     assert(query_for_markers == "Enter any letter (or two letters!) of the English alphabet to serve as a marker") 
   end
 
+  test "asks for player type" do
+    assert(query_for_player_type == "Choose a player type. Enter 1 for human or 2 for computer")
+  end
+
   test "asks which marker goes first" do
     assert(query_for_first_player == "Which player should go first? (1 for player one, 2 for player 2)")
   end
@@ -24,6 +28,10 @@ defmodule MessagesTest do
 
   test "asks for input/square to mark" do
     assert(query_for_square == "To place your piece, enter the number of an empty square on the board")
+  end
+
+  test "gives error message if bad player type selection" do
+    assert(error_not_valid_player_type == "Whoops, I didn't understand that")
   end
 
   test "gives error message if square is not empty" do

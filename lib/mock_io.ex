@@ -18,4 +18,8 @@ defmodule MockIo do
   def get_piece_two(_) do
     "R"
   end
+
+  def get_player_type(_) do
+    "1"
+  end
 end

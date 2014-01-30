@@ -9,7 +9,7 @@ defmodule Validations do
   end
 
   def valid_move?(square, board) do
-    square_is_a_number?(square) and 
+    is_a_number?(square) and 
     square_on_board?(square, board) and 
     square_empty?(board, binary_to_integer(square))
   end
@@ -20,14 +20,19 @@ defmodule Validations do
   end
 
   def valid_width?(width) do
-    in_range?(binary_to_integer(width))
+    in_board_range?(binary_to_integer(width))
+  end
+
+  def valid_player_type?(selection) do
+    is_a_number?(selection) and
+    valid_selection?(binary_to_integer(selection))
   end
 
   defp contains_one_or_two_letters?(marker) do
       Regex.match?(%r/^[A-Za-z]{1,2}$/, marker)
   end
 
-  defp square_is_a_number?(square) do
+  defp is_a_number?(square) do
     parse(square) != :error
   end
 
@@ -39,7 +44,11 @@ defmodule Validations do
     m1 == m2
   end
 
-  defp in_range?(width) do
+  defp in_board_range?(width) do
     5 > width > 2
+  end
+
+  defp valid_selection?(selection) do
+    selection == 1 or selection == 2
   end
 end

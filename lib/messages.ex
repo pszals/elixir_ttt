@@ -15,12 +15,20 @@ defmodule Messages do
     "Which player should go first? (1 for player one, 2 for player 2)"
   end
 
+  def query_for_player_type do
+    "Choose a player type. Enter 1 for human or 2 for computer"
+  end
+
   def announce_turn(piece) do
     "It's #{piece}'s turn!"
   end
 
   def query_for_square do
     "To place your piece, enter the number of an empty square on the board"
+  end
+
+  def error_not_valid_player_type do
+    "Whoops, I didn't understand that"
   end
 
   def error_not_empty do
