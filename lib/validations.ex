@@ -29,7 +29,7 @@ defmodule Validations do
   end
 
   defp contains_one_or_two_letters?(marker) do
-      Regex.match?(%r/^[A-Za-z]{1,2}$/, marker)
+    Regex.match?(%r/^[A-Za-z]{1,2}$/, marker)
   end
 
   defp is_a_number?(square) do
