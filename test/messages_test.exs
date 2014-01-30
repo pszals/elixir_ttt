@@ -61,4 +61,9 @@ defmodule MessagesTest do
   test "asks to replay or exit game" do
     assert(query_for_replay == "Would you like to play again?")
   end
+
+  test "announces end of game result dynamically" do
+    assert(announce_result(nil) == "Tie Game!\nGame Over! Or is it?")
+    assert(announce_result("R") == "Player R wins!\nGame Over! Or is it?")
+  end
 end

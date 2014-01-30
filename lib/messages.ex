@@ -58,4 +58,14 @@ defmodule Messages do
   def query_for_replay do
     "Would you like to play again?"
   end
+
+  def announce_result(result) do
+    if result == nil do
+      announce_tie <> "\n" <>
+      game_over
+    else
+      announce_winner(result) <> "\n" <>
+      game_over
+    end
+  end
 end
