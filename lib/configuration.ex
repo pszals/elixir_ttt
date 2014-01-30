@@ -57,7 +57,7 @@ defmodule Configuration do
     if valid_player_type?(player_type) do
       configure_player_types(io, player_type)
     else
-      io.display(error_not_valid_player_type)
+      io.display(error_not_valid)
       configure_player_types(io)
     end
   end
@@ -67,7 +67,7 @@ defmodule Configuration do
     if valid_player_type?(player_two_type) do
       {player_one_type, player_two_type}
     else
-      io.display(error_not_valid_player_type)
+      io.display(error_not_valid)
       configure_player_types(io, player_one_type)
     end
   end

@@ -27,7 +27,7 @@ defmodule Messages do
     "To place your piece, enter the number of an empty square on the board"
   end
 
-  def error_not_valid_player_type do
+  def error_not_valid do
     "Whoops, I didn't understand that"
   end
 
