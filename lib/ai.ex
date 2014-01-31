@@ -1,4 +1,14 @@
 defmodule Ai do
+  import Enum, only: 
+    [
+      min: 1,
+      map: 2,
+      max: 1,
+      max_by: 2,
+      reverse: 1,
+      zip: 2,
+    ]
+
   def score_board(board, piece) do
     cond do
       GameRules.winning_piece(board) == nil ->
@@ -20,19 +30,19 @@ defmodule Ai do
       GameRules.game_over?(board) ->
         score_board(board, "o") / depth
       maximizing ->
-        Enum.min(generate_next_level(GameRules.whose_turn(board, piece_one, piece_two), board) |>
-        Enum.map(fn(board) -> negamax(board, !maximizing, (depth + 1), piece_two, piece_one) end))
+        min(generate_next_level(GameRules.whose_turn(board, piece_one, piece_two), board) |>
+        map(fn(board) -> negamax(board, !maximizing, (depth + 1), piece_two, piece_one) end))
       !maximizing ->
-        Enum.max(generate_next_level(GameRules.whose_turn(board, piece_one, piece_two), board) |>
-        Enum.map(fn(board) -> negamax(board, !maximizing, (depth + 1), piece_two, piece_one) end))
+        max(generate_next_level(GameRules.whose_turn(board, piece_one, piece_two), board) |>
+        map(fn(board) -> negamax(board, !maximizing, (depth + 1), piece_two, piece_one) end))
     end
   end
 
   def squares_with_scores(board, piece_to_play, other_piece) do
     open_squares = Board.empty_squares(board)
     next_level = generate_next_level(piece_to_play, board)
-    scores = Enum.map(next_level, fn(level) -> negamax(level, false, 1, other_piece, piece_to_play) end) 
-    Enum.zip(open_squares, scores)
+    scores = map(next_level, fn(level) -> negamax(level, false, 1, other_piece, piece_to_play) end) 
+    zip(open_squares, scores)
   end
 
   def best_square(board, ai_piece, other_piece) do
@@ -41,12 +51,12 @@ defmodule Ai do
   end
 
   def max_value(list_of_tuples) do
-    {square, _} = Enum.max_by(list_of_tuples, fn{_,v} -> v end)
+    {square, _} = max_by(list_of_tuples, fn{_,v} -> v end)
     square
   end
 
   defp generate_next_level(_, _, next_levels, []) do
-    Enum.reverse(next_levels)
+    reverse(next_levels)
   end
 
   defp generate_next_level(piece, board, next_levels, possible_moves) do
