@@ -17,8 +17,19 @@ defmodule AiTest do
   end
 
   test "generates next level of moves given a piece and board" do
-    assert(generate_next_level("x", ["x","x","o","o","o","x","x", 8,  9]) == 
-                      [["x","x","o","o","o","x","x",8,"x"], 
-                       ["x","x","o","o","o","x","x","x",9]]) 
+    assert(generate_next_level("o", ["x","x","o","o","o","x","x", 8,  9]) == 
+                       [["x","x","o","o","o","x","x","o",9], 
+                      ["x","x","o","o","o","x","x",8,"o"]]) 
+    assert(generate_next_level("x", ["x","x","o","o","o","x","x","o",9]) == [["x","x","o","o","o","x","x","o","x"]])
   end
+
+  test "minimax for a tie" do
+#   assert(minimax(["x","x","o",
+#                   "o","o","x",
+#                   "x", "x",  9], true, 1, "x", "o") == 0)
+  end
+
+# test "generates a list of maps with the square as the key and the score as the value" do
+#   assert(moves_with_scores(["x","x","o","o","o","x","x", 8,  9]) == [{8, 0}, {9, 0}])
+# end
 end
