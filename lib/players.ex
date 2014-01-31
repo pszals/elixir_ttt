@@ -6,7 +6,7 @@ defmodule Players do
       error_not_valid: 0,
     ]
 
-  def human_move(io, board, piece) do
+  def make_move(io, board, piece, "1") do
     announce_turn(piece) |> io.display
     move = query_for_square |> io.get_move
 
@@ -14,7 +14,10 @@ defmodule Players do
       Board.place_piece(board, binary_to_integer(move), piece) 
     else
       error_not_valid |> io.display
-      human_move(io, board, piece)
+      make_move(io, board, piece, "1")
     end
+  end
+  
+  def make_move(io, board, piece, "2") do
   end
 end
