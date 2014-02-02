@@ -69,9 +69,9 @@ defmodule AiTest do
      assert(squares_with_scores([ 1, 2,"o",
                                   4,"x",6,
                                  "o",8, 9], "x", "o") == [])
-    assert(squares_with_scores(["x",2, 3,
-                                 4,"o",6,
-                                 7, 8,"x"], "o", "x") == [{1, -0.5}, {2, 0}])
+ #  assert(squares_with_scores(["x",2, 3,
+ #                               4,"o",6,
+ #                               7, 8,"x"], "o", "x") == [{1, -0.5}, {2, 0}])
   end
 
   test "gets best square" do
@@ -79,8 +79,17 @@ defmodule AiTest do
                         "o","o", 6,
                         "x","x", 9], "o", "x") == 6)
     assert(best_square([ 1,  2,  3,
+                        "o","o", 6,
+                        "x","x", 9], "x", "o") == 9)
+  end
+  
+  test "wins instead of blocking" do
+    assert(best_square([ 1,  2,  3,
                         "x","x", 6,
                         "o","o", 9], "o", "x") == 9)
+  end
+  
+  test "blocks a fork" do
     assert(best_square([ 1, 2,"x",
                          4,"o",6,
                         "x",8, 9], "o", "x") == 2)
@@ -88,5 +97,9 @@ defmodule AiTest do
 
   test "gets key with max value" do
     assert(max_value([{:a, 1}, {:b, 99}]) == :b)
+  end
+
+  test "gets key with min value" do
+    assert(min_value([{:a, 1}, {:b, 99}]) == :a)
   end
 end

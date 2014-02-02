@@ -5,6 +5,7 @@ defmodule Ai do
       map: 2,
       max: 1,
       max_by: 2,
+      min_by: 2,
       reverse: 1,
       zip: 2,
     ]
@@ -25,6 +26,16 @@ defmodule Ai do
     generate_next_level(piece, board, [], possible_moves)
   end
 
+  defp generate_next_level(_, _, next_levels, []) do
+    reverse(next_levels)
+  end
+
+  defp generate_next_level(piece, board, next_levels, possible_moves) do
+    [move|rest] = possible_moves
+    new_board = Board.place_piece(board, move, piece)
+    generate_next_level(piece, board, [new_board|next_levels], rest)
+  end
+
   def negamax(board, maximizing, depth, piece_one, piece_two, ai_piece) do
     cond do
       GameRules.game_over?(board) ->
@@ -38,10 +49,10 @@ defmodule Ai do
     end
   end
 
-  def squares_with_scores(board, piece_to_play, other_piece) do
+  def squares_with_scores(board, ai_piece, other_piece) do
     open_squares = Board.empty_squares(board)
-    next_level = generate_next_level(piece_to_play, board)
-    scores = map(next_level, fn(level) -> negamax(level, true, 1, other_piece, piece_to_play, piece_to_play) end) 
+    next_level = generate_next_level(ai_piece, board)
+    scores = map(next_level, fn(level) -> negamax(level, true, 1, other_piece, ai_piece, ai_piece) end) 
     zip(open_squares, scores)
   end
 
@@ -51,17 +62,12 @@ defmodule Ai do
   end
 
   def max_value(list_of_tuples) do
-    {square, _} = max_by(list_of_tuples, fn{_,v} -> v end)
+    {square, _} = max_by(list_of_tuples, fn{_, score} -> score end)
     square
   end
 
-  defp generate_next_level(_, _, next_levels, []) do
-    reverse(next_levels)
-  end
-
-  defp generate_next_level(piece, board, next_levels, possible_moves) do
-    [move|rest] = possible_moves
-    new_board = Board.place_piece(board, move, piece)
-    generate_next_level(piece, board, [new_board|next_levels], rest)
+  def min_value(list_of_tuples) do
+    {square, _} = min_by(list_of_tuples, fn{_, score} -> score end)
+    square
   end
 end
