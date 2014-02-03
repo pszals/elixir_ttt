@@ -16,4 +16,19 @@ defmodule RunnerTest do
 
     assert(play_game(MockIo, configurations) == "Player x wins!\nGame Over! Or is it?")
   end
+
+  test "gets other piece" do
+    piece_one = "x"
+    piece_two = "o"
+    board = ["x", "x", 3,
+             "o", "o", 6,
+              7,   8,  9]
+    assert(other_piece(board, piece_one, piece_two) == "o")
+    piece_one = "x"
+    piece_two = "o"
+    board = ["x", "o","x",
+             "x", "o", 6,
+              7,   8,  9]
+    assert(other_piece(board, piece_one, piece_two) == "x")
+  end
 end
