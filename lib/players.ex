@@ -6,7 +6,7 @@ defmodule Players do
       error_not_valid: 0,
     ]
 
-  def make_move(io, board, piece, other_piece, "1") do
+  def make_move(io, board, piece, _, "1") do
     announce_turn(piece) |> io.display
     move = query_for_square |> io.get_move
 
@@ -14,11 +14,13 @@ defmodule Players do
       Board.place_piece(board, binary_to_integer(move), piece) 
     else
       error_not_valid |> io.display
-      make_move(io, board, piece, other_piece, "1")
+      make_move(io, board, piece, nil, "1")
     end
   end
   
   def make_move(io, board, piece, other_piece, "2") do
-    Ai.best_square(board, piece, other_piece)
+    announce_turn(piece) |> io.display
+    move = Ai.best_square(board, piece, other_piece)
+    Board.place_piece(board, move, piece) 
   end
 end

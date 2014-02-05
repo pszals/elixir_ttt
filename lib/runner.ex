@@ -1,17 +1,15 @@
 defmodule Runner do
   import HashDict, only: [get: 2]
 
-  def run(io) do
-    configurations = Configuration.configure_game(io)
-    play_game(io, configurations)
+  def run do
+    configurations = Configuration.configure_game(RealIo)
+    play_game(RealIo, configurations)
   end
 
   def play_game(io, configurations) do
     board           = get(configurations, :board)
     piece_one       = get(configurations, :piece_one)
     piece_two       = get(configurations, :piece_two)
-    player_one_type = get(configurations, :player_one_type)
-    player_two_type = get(configurations, :player_two_type)
 
     display_board(io, board)
 
@@ -19,7 +17,7 @@ defmodule Runner do
     new_board = Players.make_move(io, board, piece_to_play, other_piece(board, piece_one, piece_two), player_type_to_play(board, configurations))
     configurations = HashDict.put(configurations, :board, new_board)
     if GameRules.game_over?(new_board) do
-      display_board(io, board)
+      display_board(io, new_board)
       GameRules.winning_piece(new_board) |>
       Messages.announce_result |>
       io.display
