@@ -18,9 +18,9 @@ defmodule Runner do
     configurations = HashDict.put(configurations, :board, new_board)
     if GameRules.game_over?(new_board) do
       display_board(io, new_board)
-      GameRules.winning_piece(new_board) |>
-      Messages.announce_result |>
-      io.display
+      GameRules.winning_piece(new_board) 
+      |> Messages.announce_result 
+      |> io.display
     else
       play_game(io, configurations)
     end
@@ -35,8 +35,8 @@ defmodule Runner do
   end
 
   defp display_board(io, board) do
-    BoardPresenter.format_board(board) |>
-    io.display
+    BoardPresenter.format_board(board) 
+    |> io.display
   end
 
   defp player_type_to_play(board, configurations) do

@@ -32,6 +32,10 @@ defmodule BoardTest do
                        "x","x","o"]) == true)
   end
 
+  test "determines if board is empty" do
+    assert(board_empty?([1,2,3,4,5,6,7,8,9]) == true)
+  end
+
   test "creates list of rows" do
     assert(rows([1,2,3,4,5,6,7,8,9]) == [[1,2,3], [4,5,6], [7,8,9]])
     assert(rows([1,2,3,4,"x",6,7,8,9]) == [[1,2,3], [4,"x",6], [7,8,9]])

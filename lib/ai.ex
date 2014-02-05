@@ -37,8 +37,8 @@ defmodule Ai do
   end
 
   def squares_with_scores(board, ai_piece, other_piece) do
-    if length(Board.empty_squares(board)) == 9 do
-      [{3, 1}]
+    if Board.board_empty?(board) do
+      move_into_corner
     else
       next_level = generate_next_level(ai_piece, board)
       scores = map(next_level, fn(level) -> negamax(level, 1, other_piece, ai_piece) end) 
@@ -48,8 +48,8 @@ defmodule Ai do
   end
 
   def best_square(board, ai_piece, other_piece) do
-    squares_with_scores(board, ai_piece, other_piece) |>
-    max_value
+    squares_with_scores(board, ai_piece, other_piece)
+    |> max_value
   end
 
   def max_value(list_of_tuples) do
@@ -60,5 +60,9 @@ defmodule Ai do
   def min_value(list_of_tuples) do
     {square, _} = min_by(list_of_tuples, fn{_, score} -> score end)
     square
+  end
+
+  defp move_into_corner do
+    [{3, 1}]
   end
 end

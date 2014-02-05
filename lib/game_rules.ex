@@ -31,9 +31,9 @@ defmodule GameRules do
   end
 
   def winning_piece(board) do
-    filter(winning_combinations(board), fn(combo) -> all_same?(combo) end) |> 
-    flatten |> 
-    first
+    filter(winning_combinations(board), fn(combo) -> all_same?(combo) end)
+    |> flatten
+    |> first
   end
 
   def winning_combinations(board) do

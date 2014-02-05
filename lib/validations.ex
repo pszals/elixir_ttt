@@ -4,8 +4,8 @@ defmodule Validations do
   import Integer, only: [parse: 1]
 
   def yes_or_no?(response) do
-    yes_or_no |>
-    Enum.any?(fn(input) -> response == input end)
+    yes_or_no 
+    |> Enum.any?(fn(input) -> response == input end)
   end
 
   def valid_move?(square, board) do

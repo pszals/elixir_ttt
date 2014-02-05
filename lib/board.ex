@@ -37,8 +37,12 @@ defmodule Board do
   end
 
   def board_full?(board) do
-    empty_squares(board) |>
-    count == 0
+    empty_squares(board)
+    |> count == 0
+  end
+
+  def board_empty?(board) do
+    length(empty_squares(board)) == length(board)
   end
 
   def rows(board) do
@@ -57,13 +61,13 @@ defmodule Board do
   end
 
   defp diagonal_down(rows) do
-    with_index(rows) |> 
-    map(fn{row, index} -> at(row, index) end)
+    with_index(rows) 
+    |> map(fn{row, index} -> at(row, index) end)
   end
 
   defp diagonal_up(rows) do
-    map(rows, fn(row) -> reverse(row) end) |>
-    with_index |>
-    map(fn{row, index} -> at(row, index) end)
+    map(rows, fn(row) -> reverse(row) end)
+    |> with_index
+    |> map(fn{row, index} -> at(row, index) end)
   end
 end
