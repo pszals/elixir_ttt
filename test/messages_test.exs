@@ -31,7 +31,7 @@ defmodule MessagesTest do
   end
 
   test "gives error message if bad player type selection" do
-    assert(error_not_valid == "Whoops, I didn't understand that")
+    assert(error_not_valid == "Whoops, that doesn't quite work")
   end
 
   test "gives error message if square is not empty" do

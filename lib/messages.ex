@@ -28,7 +28,7 @@ defmodule Messages do
   end
 
   def error_not_valid do
-    "Whoops, I didn't understand that"
+    "Whoops, that doesn't quite work"
   end
 
   def error_not_empty do

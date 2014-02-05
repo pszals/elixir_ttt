@@ -26,7 +26,7 @@ defmodule Configuration do
     if valid_width?(width) do
       Board.create_board(binary_to_integer(width)) 
     else
-      io.display(error_width)
+      io.display(error_not_valid)
       configure_board(io)
     end
   end
