@@ -22,37 +22,24 @@ defmodule Ai do
   end
 
   def generate_next_level(piece, board) do
-    possible_moves = Board.empty_squares(board)
-    generate_next_level(piece, board, [], possible_moves)
+    Board.empty_squares(board)
+    |> map(fn(move) -> Board.place_piece(board, move, piece) end)
   end
 
-  defp generate_next_level(_, _, next_levels, []) do
-    reverse(next_levels)
-  end
-
-  defp generate_next_level(piece, board, next_levels, possible_moves) do
-    [move|rest] = possible_moves
-    new_board = Board.place_piece(board, move, piece)
-    generate_next_level(piece, board, [new_board|next_levels], rest)
-  end
-
-  def negamax(board, maximizing, depth, piece_one, piece_two, ai_piece) do
-    cond do
-      GameRules.game_over?(board) ->
-        score_board(board, ai_piece) / depth
-      maximizing ->
-        max(generate_next_level(GameRules.whose_turn(board, piece_one, piece_two), board) |>
-        map(fn(board) -> negamax(board, !maximizing, (depth + 1), piece_two, piece_one, ai_piece) end))
-      !maximizing ->
-        min(generate_next_level(GameRules.whose_turn(board, piece_one, piece_two), board) |>
-        map(fn(board) -> negamax(board, !maximizing, (depth + 1), piece_two, piece_one, ai_piece) end))
+  def negamax(board, depth, piece_one, piece_two) do
+      if GameRules.game_over?(board) do
+        score_board(board, piece_two) / depth
+      else
+        generate_next_level(piece_one, board) 
+        |> map(fn(level) -> -1 * negamax(level, (depth + 1), piece_two, piece_one) end) 
+        |> min
     end
   end
 
   def squares_with_scores(board, ai_piece, other_piece) do
-    open_squares = Board.empty_squares(board)
     next_level = generate_next_level(ai_piece, board)
-    scores = map(next_level, fn(level) -> negamax(level, true, 1, other_piece, ai_piece, ai_piece) end) 
+    scores = map(next_level, fn(level) -> negamax(level, 1, other_piece, ai_piece) end) 
+    open_squares = Board.empty_squares(board)
     zip(open_squares, scores)
   end
 
