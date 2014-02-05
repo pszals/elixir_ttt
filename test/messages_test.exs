@@ -7,19 +7,19 @@ defmodule MessagesTest do
   end
 
   test "asks for board width" do
-    assert(query_for_board_width == "Enter 3 (quick) for a 3x3 game or 4 (slower) for a 4x4 game")
+    assert(query_for_board_width == "Enter 3 (quick) for a 3x3 game or 4 (slower) for a 4x4 game\n>> ")
   end
 
   test "asks for marker types" do
-    assert(query_for_markers == "Enter any letter (or two letters!) of the English alphabet to serve as a marker") 
+    assert(query_for_markers == "Enter any letter (or two letters!) of the English alphabet to serve as a marker\n>> ") 
   end
 
   test "asks for player type" do
-    assert(query_for_player_type == "Choose a player type. Enter 1 for human or 2 for computer")
+    assert(query_for_player_type == "Choose a player type. Enter 1 for human or 2 for computer\n>> ")
   end
 
   test "asks which marker goes first" do
-    assert(query_for_first_player == "Which player should go first? (1 for player one, 2 for player 2)")
+    assert(query_for_first_player == "Which player should go first? (1 for player one, 2 for player 2)\n>> ")
   end
 
   test "announces whose turn it is" do
@@ -27,7 +27,7 @@ defmodule MessagesTest do
   end
 
   test "asks for input/square to mark" do
-    assert(query_for_square == "To place your piece, enter the number of an empty square on the board")
+    assert(query_for_square == "To place your piece, enter the number of an empty square on the board\n>> ")
   end
 
   test "gives error message if bad player type selection" do
@@ -59,7 +59,7 @@ defmodule MessagesTest do
   end
 
   test "asks to replay or exit game" do
-    assert(query_for_replay == "Would you like to play again?")
+    assert(query_for_replay == "Would you like to play again?\n>> ")
   end
 
   test "announces end of game result dynamically" do

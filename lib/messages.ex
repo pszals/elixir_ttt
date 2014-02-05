@@ -4,19 +4,19 @@ defmodule Messages do
   end
 
   def query_for_board_width do
-    "Enter 3 (quick) for a 3x3 game or 4 (slower) for a 4x4 game"
+    "Enter 3 (quick) for a 3x3 game or 4 (slower) for a 4x4 game\n>> "
   end
 
   def query_for_markers do
-    "Enter any letter (or two letters!) of the English alphabet to serve as a marker"
+    "Enter any letter (or two letters!) of the English alphabet to serve as a marker\n>> "
   end
 
   def query_for_first_player do
-    "Which player should go first? (1 for player one, 2 for player 2)"
+    "Which player should go first? (1 for player one, 2 for player 2)\n>> "
   end
 
   def query_for_player_type do
-    "Choose a player type. Enter 1 for human or 2 for computer"
+    "Choose a player type. Enter 1 for human or 2 for computer\n>> "
   end
 
   def announce_turn(piece) do
@@ -24,7 +24,7 @@ defmodule Messages do
   end
 
   def query_for_square do
-    "To place your piece, enter the number of an empty square on the board"
+    "To place your piece, enter the number of an empty square on the board\n>> "
   end
 
   def error_not_valid do
@@ -56,7 +56,7 @@ defmodule Messages do
   end
 
   def query_for_replay do
-    "Would you like to play again?"
+    "Would you like to play again?\n>> "
   end
 
   def announce_result(result) do
