@@ -7,7 +7,7 @@ defmodule MessagesTest do
   end
 
   test "asks for board width" do
-    assert(query_for_board_width == "Enter 3 (quick) for a 3x3 game or 4 (slower) for a 4x4 game\n>> ")
+    assert(query_for_board_width == "Enter 3 (quick) for a 3x3 game or 4 (not recommended against a computer opponent, unless you are running on a VERY powerful machine) for a 4x4 game\n>> ")
   end
 
   test "asks for marker types" do

@@ -4,7 +4,7 @@ defmodule Messages do
   end
 
   def query_for_board_width do
-    "Enter 3 (quick) for a 3x3 game or 4 (slower) for a 4x4 game\n>> "
+    "Enter 3 (quick) for a 3x3 game or 4 (not recommended against a computer opponent, unless you are running on a VERY powerful machine) for a 4x4 game\n>> "
   end
 
   def query_for_markers do
