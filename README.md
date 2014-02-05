@@ -12,5 +12,5 @@ To Test:
 
 To Run:
 
-```iex -S mix```
-```Runner.start```
+    iex -S mix
+    Runner.run
