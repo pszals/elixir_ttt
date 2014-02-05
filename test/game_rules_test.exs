@@ -51,4 +51,19 @@ defmodule GameRulesTest do
                        "o","o","x",
                        "x","x","o"]) == true)
   end
+
+  test "gets other piece" do
+    piece_one = "x"
+    piece_two = "o"
+    board = ["x", "x", 3,
+             "o", "o", 6,
+              7,   8,  9]
+    assert(other_piece(board, piece_one, piece_two) == "o")
+    piece_one = "x"
+    piece_two = "o"
+    board = ["x", "o","x",
+             "x", "o", 6,
+              7,   8,  9]
+    assert(other_piece(board, piece_one, piece_two) == "x")
+  end
 end

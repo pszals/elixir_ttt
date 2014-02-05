@@ -44,6 +44,14 @@ defmodule GameRules do
     winner_on_board?(board) or Board.board_full?(board)   
   end
 
+  def other_piece(board, piece_one, piece_two) do
+    if GameRules.whose_turn(board, piece_one, piece_two) == piece_one do
+      piece_two
+    else
+      piece_one
+    end
+  end
+
   defp number_of_pieces(board, piece) do
     count(board, fn(square) -> square == piece end)
   end

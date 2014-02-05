@@ -14,7 +14,7 @@ defmodule Runner do
     display_board(io, board)
 
     piece_to_play   = GameRules.whose_turn(board, piece_one, piece_two)
-    new_board = Players.make_move(io, board, piece_to_play, other_piece(board, piece_one, piece_two), player_type_to_play(board, configurations))
+    new_board = Players.make_move(io, board, piece_to_play, GameRules.other_piece(board, piece_one, piece_two), player_type_to_play(board, configurations))
     configurations = HashDict.put(configurations, :board, new_board)
     if GameRules.game_over?(new_board) do
       display_board(io, new_board)
@@ -23,14 +23,6 @@ defmodule Runner do
       |> io.display
     else
       play_game(io, configurations)
-    end
-  end
-
-  def other_piece(board, piece_one, piece_two) do
-    if GameRules.whose_turn(board, piece_one, piece_two) == piece_one do
-      piece_two
-    else
-      piece_one
     end
   end
 
