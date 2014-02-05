@@ -37,10 +37,14 @@ defmodule Ai do
   end
 
   def squares_with_scores(board, ai_piece, other_piece) do
-    next_level = generate_next_level(ai_piece, board)
-    scores = map(next_level, fn(level) -> negamax(level, 1, other_piece, ai_piece) end) 
-    open_squares = Board.empty_squares(board)
-    zip(open_squares, scores)
+    if length(Board.empty_squares(board)) == 9 do
+      [{3, 1}]
+    else
+      next_level = generate_next_level(ai_piece, board)
+      scores = map(next_level, fn(level) -> negamax(level, 1, other_piece, ai_piece) end) 
+      open_squares = Board.empty_squares(board)
+      zip(open_squares, scores)
+    end
   end
 
   def best_square(board, ai_piece, other_piece) do

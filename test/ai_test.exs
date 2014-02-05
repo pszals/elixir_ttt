@@ -76,6 +76,10 @@ defmodule AiTest do
                                   4,"x",6,
                                  "o",8, 9], "x", "o") == [{1, -0.25}, {2, 0.0}, {4, 0.0}, {6, 0.0}, {8, 0.0}, {9, -0.25}])
   end
+
+  test "picks a corner when board is empty" do
+    assert(squares_with_scores([1,2,3,4,5,6,7,8,9], "x", "o") == [{3, 1}])
+  end
   
   test "blocks a fork with best move" do
     assert(best_square([ 1, 2,"o",
