@@ -2,8 +2,8 @@ defmodule Configuration do
   import Messages
   import Validations, only:
     [
-      valid_width?: 1,
       valid_marker?: 2,
+      valid_width?: 1,
       valid_player_type?: 1,
     ]
 

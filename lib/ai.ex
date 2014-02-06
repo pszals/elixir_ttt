@@ -1,10 +1,10 @@
 defmodule Ai do
   import Enum, only: 
     [
-      min: 1,
       map: 2,
       max: 1,
       max_by: 2,
+      min: 1,
       min_by: 2,
       reverse: 1,
       zip: 2,

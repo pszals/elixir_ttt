@@ -2,8 +2,8 @@ defmodule Players do
   import Messages, only:
     [
       announce_turn: 1,
-      query_for_square: 0,
       error_not_valid: 0,
+      query_for_square: 0,
     ]
 
   def make_move(io, board, piece, _, "1") do
