@@ -11,11 +11,11 @@ defmodule MessagesTest do
   end
 
   test "asks for marker types" do
-    assert(query_for_markers == "Enter any letter (or two letters!) of the English alphabet to serve as a marker\n>> ") 
+    assert(query_for_piece("1") == "For player 1, enter any letter (or two letters!) of the English alphabet to serve as a marker\n>> ") 
   end
 
   test "asks for player type" do
-    assert(query_for_player_type == "Choose a player type. Enter 1 for human or 2 for computer\n>> ")
+    assert(query_for_player_type("1") == "For player 1, choose a player type. Enter 1 for human or 2 for computer\n>> ")
   end
 
   test "asks which marker goes first" do

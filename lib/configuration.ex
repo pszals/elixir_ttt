@@ -32,7 +32,7 @@ defmodule Configuration do
   end
 
   defp configure_pieces(io) do
-    piece_one = io.get_piece_one(query_for_markers)
+    piece_one = io.get_piece_one(query_for_piece("1"))
     if valid_marker?(piece_one, nil) do
       configure_pieces(io, piece_one)
     else
@@ -42,7 +42,7 @@ defmodule Configuration do
   end
   
   defp configure_pieces(io, piece_one) do
-    piece_two = io.get_piece_two(query_for_markers)
+    piece_two = io.get_piece_two(query_for_piece("2"))
     if valid_marker?(piece_one, piece_two) do
       {piece_one, piece_two}
     else
@@ -52,7 +52,7 @@ defmodule Configuration do
   end
 
   defp configure_player_types(io) do
-    player_type = io.get_player_type(query_for_player_type)
+    player_type = io.get_player_type(query_for_player_type("1"))
     if valid_player_type?(player_type) do
       configure_player_types(io, player_type)
     else
@@ -62,7 +62,7 @@ defmodule Configuration do
   end
 
   defp configure_player_types(io, player_one_type) do
-    player_two_type = io.get_player_type(query_for_player_type)
+    player_two_type = io.get_player_type(query_for_player_type("2"))
     if valid_player_type?(player_two_type) do
       {player_one_type, player_two_type}
     else

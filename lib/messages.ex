@@ -7,16 +7,16 @@ defmodule Messages do
     "Enter 3 (quick) for a 3x3 game or 4 (not recommended against a computer opponent, unless you are running on a VERY powerful machine) for a 4x4 game\n>> "
   end
 
-  def query_for_markers do
-    "Enter any letter (or two letters!) of the English alphabet to serve as a marker\n>> "
+  def query_for_piece(player) do
+    "For player #{player}, enter any letter (or two letters!) of the English alphabet to serve as a marker\n>> "
   end
 
   def query_for_first_player do
     "Which player should go first? (1 for player one, 2 for player 2)\n>> "
   end
 
-  def query_for_player_type do
-    "Choose a player type. Enter 1 for human or 2 for computer\n>> "
+  def query_for_player_type(player) do
+    "For player #{player}, choose a player type. Enter 1 for human or 2 for computer\n>> "
   end
 
   def announce_turn(piece) do
