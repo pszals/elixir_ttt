@@ -1,4 +1,4 @@
-# Challenge
+# Elixir Tic Tac Toe with Negamax
 
 To get this up and running, you must first install Erlang and Elixir:
 
