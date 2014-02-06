@@ -5,7 +5,6 @@ defmodule Ai do
       max: 1,
       max_by: 2,
       min: 1,
-      min_by: 2,
       reverse: 1,
       zip: 2,
     ]
@@ -54,11 +53,6 @@ defmodule Ai do
 
   def max_value(list_of_tuples) do
     {square, _} = max_by(list_of_tuples, fn{_, score} -> score end)
-    square
-  end
-
-  def min_value(list_of_tuples) do
-    {square, _} = min_by(list_of_tuples, fn{_, score} -> score end)
     square
   end
 

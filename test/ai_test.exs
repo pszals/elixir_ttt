@@ -102,8 +102,4 @@ defmodule AiTest do
   test "gets key with max value" do
     assert(max_value([{:a, 1}, {:b, 99}]) == :b)
   end
-
-  test "gets key with min value" do
-    assert(min_value([{:a, 1}, {:b, 99}]) == :a)
-  end
 end
